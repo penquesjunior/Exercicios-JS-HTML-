@@ -1,0 +1,57 @@
+<meta charset="UTF-8">
+
+<input/>
+<button>Compare com o número que estou pensando!</button>
+
+<script>
+
+	function sorteia(){
+		return Math.round(Math.random()*10);
+	}
+
+	function sorteiaNumeros(quantidade){
+		var segredo = [];
+
+		for(var i = 0; quantidade> i; i++){
+			var numeroAleatorio = sorteia();
+			var achou = false;
+			
+			for(var i=0; i <segredo.length; i ++){
+				if(segredo[i] == numeroAleatorio){
+					achou = true;
+					break;
+				}
+			}
+			if(achou == false){
+			segredo.push(numeroAleatorio);
+		}
+		}
+		return segredo;
+	}
+ 	var segredo = sorteiaNumeros(9);
+ 	console.log(segredo);
+
+	var input = document.querySelector("input");
+	input.focus();
+
+	function verifica() {
+
+	var achou = false;
+
+	for(var i=0; i<segredo.length; i++){
+	   	 if(segredo[i] == input.value) {
+	        alert("Parabéns! Você acertou o número secreto");
+	        achou = true;
+	        break;
+	   	 }
+	}
+	if(achou == false){
+		alert("VOCE ERROU");
+	}
+	input.value = "";
+	input.focus();
+	}
+    
+    var button = document.querySelector("button");
+	button.onclick = verifica;
+</script>
